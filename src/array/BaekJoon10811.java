@@ -1,0 +1,35 @@
+package array;
+
+import java.util.Scanner;
+
+public class BaekJoon10811 {
+    /**
+     * 백준 10811번 바구니 뒤집기 문제
+     * 임시 변수 (int t) 활용
+     * 시작 지점(int start)을 증가시키고 끝 지점(int end)를 감소시키면서 배열의 start, end 수의 인덱스를 교체한다.
+     */
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int m = s.nextInt();
+
+        int[] baguni = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            baguni[i] = i + 1;
+        }
+
+        for (int i = 0; i < m; i++) {
+            int start = s.nextInt() - 1;
+            int end = s.nextInt() - 1;
+            while (start < end) {
+                int t = baguni[start];
+                baguni[start++] = baguni[end];
+                baguni[end--] = t;
+            }
+        }
+        s.close();
+        for (int b:baguni)
+            System.out.print(b + " ");
+    }
+}
